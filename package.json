@@ -26,7 +26,8 @@
   "devDependencies": {},
   "dependencies": {
     "ejs": "^3.0.1",
-    "loader-utils": "^2.0.0"
+    "loader-utils": "^2.0.0",
+    "html-minifier": "^4"
   },
   "engines": {
     "node": ">=8.9.0"

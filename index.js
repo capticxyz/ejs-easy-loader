@@ -1,6 +1,7 @@
 'use strict';
 const loaderUtils = require("loader-utils");
 const ejs = require("ejs");
+const htmlmin = require('html-minifier');
 
 module.exports = function(source) {
   var loaderOptions, ejsOptions, template;
@@ -13,7 +14,7 @@ module.exports = function(source) {
   // Get options, default options for ejs: { client: true, filename: '.' }, client must set to true
   loaderOptions = loaderUtils.getOptions(this);
   ejsOptions = Object.assign({ client: true, filename: '.' }, loaderOptions);
-
+  source = htmlmin.minify(source, {collapseWhitespace: true});
   template = ejs.compile(source, ejsOptions);
   if (template.dependencies && template.dependencies.length > 0) {
     var that = this;
